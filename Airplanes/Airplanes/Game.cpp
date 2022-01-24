@@ -96,7 +96,7 @@ void Game::processKeys(sf::Event t_event)
 
 void Game::processMouse(sf::Event t_event)
 {
-
+	if(sf::Event::mouseButton)
 }
 
 /// <summary>
