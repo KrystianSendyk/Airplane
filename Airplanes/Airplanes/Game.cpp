@@ -18,7 +18,7 @@ Game::Game() :
 	m_exitGame{false} //when true game will exit
 {
 	setupFontAndText(); // load font 
-	setupSprite(); // load texture
+	firstPlane();
 }
 
 /// <summary>
@@ -109,7 +109,7 @@ void Game::render()
 {
 	m_window.clear(sf::Color::White);
 	m_window.draw(m_welcomeMessage);
-	m_window.draw(m_logoSprite);
+	m_window.draw(m_firstPlane);
 	m_window.display();
 }
 
@@ -133,16 +133,14 @@ void Game::setupFontAndText()
 
 }
 
-/// <summary>
-/// load the texture and setup the sprite for the logo
-/// </summary>
-void Game::setupSprite()
+void Game::firstPlane()//loads texture for first plane
 {
-	if (!m_logoTexture.loadFromFile("ASSETS\\IMAGES\\SFML-LOGO.png"))
+	if (!m_planeTex1.loadFromFile("ASSETS\\IMAGES\\planes.png"))
 	{
-		// simple error message if previous call fails
-		std::cout << "problem loading logo" << std::endl;
+		std::cout << "Problem with the image" << std::endl;
 	}
-	m_logoSprite.setTexture(m_logoTexture);
-	m_logoSprite.setPosition(300.0f, 180.0f);
+	m_firstPlane.setTexture(m_planeTex1);
+	m_firstPlane.setTextureRect(sf::IntRect(0.0, .0, 110.0, 100.0));
+	m_firstPlane.setPosition(300.0f, 180.0f);
+	m_firstPlane.setOrigin(sf::Vector2f{ 34.0f, 23.9f });
 }
