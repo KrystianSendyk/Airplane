@@ -74,6 +74,10 @@ void Game::processEvents()
 		{
 			processKeys(newEvent);
 		}
+		if (sf::Event::MouseButtonPressed == newEvent.type)
+		{
+			processMouse(newEvent);
+		}
 	}
 }
 
@@ -88,6 +92,11 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
+}
+
+void Game::processMouse(sf::Event t_event)
+{
+
 }
 
 /// <summary>
@@ -135,12 +144,12 @@ void Game::setupFontAndText()
 
 void Game::firstPlane()//loads texture for first plane
 {
-	if (!m_planeTex1.loadFromFile("ASSETS\\IMAGES\\planes.png"))
+	if (!m_planeTex1.loadFromFile("ASSETS\\IMAGES\\1 plane.png"))
 	{
 		std::cout << "Problem with the image" << std::endl;
 	}
 	m_firstPlane.setTexture(m_planeTex1);
 	m_firstPlane.setTextureRect(sf::IntRect(0.0, .0, 110.0, 100.0));
-	m_firstPlane.setPosition(300.0f, 180.0f);
+	m_firstPlane.setPosition(m_location1Plane);
 	m_firstPlane.setOrigin(sf::Vector2f{ 34.0f, 23.9f });
 }

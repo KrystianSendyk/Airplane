@@ -25,14 +25,22 @@ private:
 
 	void processEvents();
 	void processKeys(sf::Event t_event);
+	void processMouse(sf::Event t_event);
 	void update(sf::Time t_deltaTime);
 	void render();
 	
 	void setupFontAndText();
 	void firstPlane();
+	
+	enum class direction
+	{
+		up, down, left, right
+	};
+	void move();
 
 	sf::Sprite m_firstPlane; //image for first plane
 	sf::Texture m_planeTex1; //Texture for first plane
+	sf::Vector2f m_location1Plane = sf::Vector2f{ 350.0f, 280.0f };
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
