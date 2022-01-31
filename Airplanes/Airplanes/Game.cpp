@@ -96,19 +96,26 @@ void Game::processKeys(sf::Event t_event)
 
 void Game::processMouse(sf::Event t_event)
 {
+	float Pi = 3.14159265359;
 	m_up.x = t_event.mouseButton.x;
 	m_up.y = t_event.mouseButton.y;
 
 	m_down.x = t_event.mouseButton.x;
 	m_down.y = t_event.mouseButton.y;
 
+	sf::Vector2f velocity = m_up - m_down;
+
+	float radians = std::atan2(velocity.x, velocity.y);
+	float headingDegrees = 180.0f * radians / Pi;
+	headingDegrees += 90.0f;
+
 	sf::Vector2f movement(0.0f, 0.0f);
 
 	if (sf::Mouse::Left == t_event.mouseButton.button)
 	{
-		sf::Vector2f vector = m_up - m_down;
-
-		m_firstPlane.setPosition(movement);
+		m_firstPlaneVel = velocity / 100.0f;
+		m_firstPlaneHeading = headingDegrees;
+		m_firstPlane.setRotation(headingDegrees);
 	}
 }
 
@@ -123,6 +130,7 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.close();
 	}
 	move();
+	border();
 }
 
 /// <summary>
@@ -166,20 +174,40 @@ void Game::setupFontAndText()
 
 void Game::firstPlane()//loads texture for first plane
 {
-	if (!m_planeTex1.loadFromFile("ASSETS\\IMAGES\\1 plane.png"))
+	if (!m_firstPlaneTexture.loadFromFile("ASSETS\\IMAGES\\1 plane.png"))
 	{
 		std::cout << "Problem with the image" << std::endl;
 	}
-	m_firstPlane.setTexture(m_planeTex1);
-	
-	m_firstPlane.setPosition(m_location1Plane);
+	m_firstPlane.setTexture(m_firstPlaneTexture);
+	m_firstPlane.setPosition(m_firstPlaneLocation);
 	m_firstPlane.setOrigin(sf::Vector2f{ 34.0f, 23.9f });
+}
+
+void Game::border()
+{
+	if (m_firstPlaneLocation.x < 40.0f)
+	{
+		m_firstPlaneLocation.x = 40.0f;
+	}
+	if (m_firstPlaneLocation.x > 800.0f - 40.0f)
+	{
+		m_firstPlaneLocation.x = 740.0;
+	}
+	if (m_firstPlaneLocation.y < 100.0f)
+	{
+		m_firstPlaneLocation.y = 100.0f;
+	}
+	if (m_firstPlaneLocation.y > 530.0f - 10.0f)
+	{
+		m_firstPlaneLocation.y = 520.0f;
+	}
 }
 
 void Game::move()
 {
-	sf::Vector2f m_location();
+	m_firstPlaneLocation += m_firstPlaneVel;
 
-	m_location1Plane.x;
+	m_firstPlane.setPosition(m_firstPlaneLocation);
+	
 
 }

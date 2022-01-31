@@ -33,12 +33,14 @@ private:
 	void setupFontAndText(); //instruction for the players
 	void firstPlane(); //sprite of the first plane
 	
+	void border();
 	void move(); //movement for the planes
 
 	sf::Sprite m_firstPlane; //image for first plane
-	sf::Texture m_planeTex1; //Texture for first plane
-	sf::Vector2f m_location1Plane = sf::Vector2f{ 350.0f, 280.0f }; //location of the first plane
-	float m_1PlaneSpeed = 10.0f;
+	sf::Texture m_firstPlaneTexture; //Texture for first plane
+	sf::Vector2f m_firstPlaneLocation = sf::Vector2f{ 350.0f, 280.0f }; //location of the first plane
+	sf::Vector2f m_firstPlaneVel = { 0.0f, 0.0f }; //velocity of a plane
+	float m_firstPlaneHeading = 45.0f; //degress of turn
 
 	sf::Texture m_tSky; //texture for sky
 	sf::Sprite m_sky; //sprite for sky
