@@ -96,7 +96,16 @@ void Game::processKeys(sf::Event t_event)
 
 void Game::processMouse(sf::Event t_event)
 {
-	
+	sf::Vector2f movement(0.0f, 0.0f);
+
+	if (sf::Mouse::Button::Left == t_event.mouseButton.button)
+	{
+		sf::Vector2f location();
+
+		
+
+		
+	}
 }
 
 /// <summary>
@@ -109,6 +118,7 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
+	move();
 }
 
 /// <summary>
@@ -117,9 +127,21 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear(sf::Color::White);
+	m_window.draw(m_sky);
 	m_window.draw(m_instruction);
 	m_window.draw(m_firstPlane);
 	m_window.display();
+}
+
+void Game::sky()
+{
+	if (!m_tSky.loadFromFile("ASSETS\\IMAGES\\sky.jpeg"))
+	{
+		std::cout << "Problem with the image" << std::endl;
+	}
+	m_sky.setTexture(m_tSky);
+	m_sky.setPosition(m_skyLocation);
+	m_sky.setOrigin(sf::Vector2f{ 34.0f, 23.9f });
 }
 
 /// <summary>
@@ -146,7 +168,15 @@ void Game::firstPlane()//loads texture for first plane
 		std::cout << "Problem with the image" << std::endl;
 	}
 	m_firstPlane.setTexture(m_planeTex1);
-	m_firstPlane.setTextureRect(sf::IntRect(0.0, .0, 110.0, 100.0));
+	
 	m_firstPlane.setPosition(m_location1Plane);
 	m_firstPlane.setOrigin(sf::Vector2f{ 34.0f, 23.9f });
+}
+
+void Game::move()
+{
+	sf::Vector2f m_location();
+
+	m_location1Plane.x;
+
 }
