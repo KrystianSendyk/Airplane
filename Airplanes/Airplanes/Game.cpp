@@ -96,15 +96,19 @@ void Game::processKeys(sf::Event t_event)
 
 void Game::processMouse(sf::Event t_event)
 {
+	m_up.x = t_event.mouseButton.x;
+	m_up.y = t_event.mouseButton.y;
+
+	m_down.x = t_event.mouseButton.x;
+	m_down.y = t_event.mouseButton.y;
+
 	sf::Vector2f movement(0.0f, 0.0f);
 
-	if (sf::Mouse::Button::Left == t_event.mouseButton.button)
+	if (sf::Mouse::Left == t_event.mouseButton.button)
 	{
-		sf::Vector2f location();
+		sf::Vector2f vector = m_up - m_down;
 
-		
-
-		
+		m_firstPlane.setPosition(movement);
 	}
 }
 
@@ -140,7 +144,6 @@ void Game::sky()
 		std::cout << "Problem with the image" << std::endl;
 	}
 	m_sky.setTexture(m_tSky);
-	m_sky.setPosition(m_skyLocation);
 	m_sky.setOrigin(sf::Vector2f{ 34.0f, 23.9f });
 }
 

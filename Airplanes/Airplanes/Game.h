@@ -29,23 +29,22 @@ private:
 	void update(sf::Time t_deltaTime);
 	void render();
 	
-	void sky();
+	void sky(); //sprite for the background
 	void setupFontAndText(); //instruction for the players
 	void firstPlane(); //sprite of the first plane
 	
-	enum class direction
-	{
-		up, down, left, right, none
-	};
 	void move(); //movement for the planes
 
 	sf::Sprite m_firstPlane; //image for first plane
 	sf::Texture m_planeTex1; //Texture for first plane
 	sf::Vector2f m_location1Plane = sf::Vector2f{ 350.0f, 280.0f }; //location of the first plane
+	float m_1PlaneSpeed = 10.0f;
 
 	sf::Texture m_tSky; //texture for sky
 	sf::Sprite m_sky; //sprite for sky
-	sf::Vector2f m_skyLocation = sf::Vector2f{ 23,89 };
+
+	sf::Vector2f m_up{ 0.0f, 0.0f };
+	sf::Vector2f m_down{ 0.0f,0.0f };
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
@@ -55,4 +54,3 @@ private:
 };
 
 #endif // !GAME_HPP
-
