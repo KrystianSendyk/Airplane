@@ -5,8 +5,6 @@
 #include "Game.h"
 #include <iostream>
 
-
-
 /// <summary>
 /// default constructor
 /// setup the window properties
@@ -28,7 +26,6 @@ Game::Game() :
 Game::~Game()
 {
 }
-
 
 /// <summary>
 /// main game loop
@@ -80,7 +77,6 @@ void Game::processEvents()
 		}
 	}
 }
-
 
 /// <summary>
 /// deal with key presses from the user

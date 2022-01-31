@@ -39,8 +39,8 @@ private:
 	sf::Sprite m_firstPlane; //image for first plane
 	sf::Texture m_firstPlaneTexture; //Texture for first plane
 	sf::Vector2f m_firstPlaneLocation = sf::Vector2f{ 350.0f, 280.0f }; //location of the first plane
-	sf::Vector2f m_firstPlaneVel = { 0.0f, 0.0f }; //velocity of a plane
-	float m_firstPlaneHeading = 45.0f; //degress of turn
+	sf::Vector2f m_firstPlaneVel = { 6.0f, 9.0f }; //velocity of a plane
+	float m_firstPlaneHeading = 45.0f; //the face of where it should go
 
 	sf::Texture m_tSky; //texture for sky
 	sf::Sprite m_sky; //sprite for sky
@@ -52,7 +52,6 @@ private:
 	sf::Font m_ArialBlackfont; // font used by message
 	sf::Text m_instruction; // text used for message on screen
 	bool m_exitGame; // control exiting game
-
 };
 
 #endif // !GAME_HPP
